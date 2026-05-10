@@ -26,9 +26,8 @@ log = logging.getLogger(__name__)
 # ── Config ─────────────────────────────────────────────────────────────
 KAFKA_BROKER   = "kafka:29092"          # inside Docker network
 KAFKA_TOPIC    = "traffic-raw"
-PG_URL = "jdbc:postgresql://host.docker.internal:5432/traffic_db"
-PG_PROPS       = {"user": "airflow", "password": "airflow", "driver": "org.postgresql.Driver"}
-
+PG_URL = "jdbc:postgresql://172.19.0.4:5432/traffic_db"
+PG_PROPS = {"user": "airflow", "password": "airflow", "driver": "org.postgresql.Driver"}
 WINDOW_DURATION  = "5 minutes"
 WATERMARK_DELAY  = "10 minutes"         # tolerate up to 10 min late data
 CHECKPOINT_DIR   = "/tmp/spark-checkpoints"
