@@ -11,34 +11,7 @@ generates nightly analytical reports for traffic police deployment decisions.
 
 ## Architecture
 
-```
-+------------------------------------------------------------------+
-|                       LAMBDA ARCHITECTURE                        |
-+------------------------------------------------------------------+
-|                                                                  |
-|   [Python Producer]                                              |
-|   4 Junction Sensors                                             |
-|         |                                                        |
-|         v                                                        |
-|   [Apache Kafka]  <--------- topic: traffic-raw                 |
-|         |                                                        |
-|         |                                                        |
-|         +-------------------------+                              |
-|         |                         |                             |
-|         v                         v                             |
-|   SPEED LAYER               BATCH LAYER                         |
-|   [Spark Streaming]         [Apache Airflow]                    |
-|   5-min windows             Nightly DAG @ 23:00                 |
-|   Congestion Index          Peak Hour Analysis                  |
-|   Critical Alerts           Police Report                       |
-|         |                         |                             |
-|         v                         v                             |
-|   [PostgreSQL]              [reports/ folder]                   |
-|   processed_traffic         traffic_report.csv                  |
-|   critical_traffic          traffic_report.txt                  |
-|                                                                  |
-+------------------------------------------------------------------+
-```
+![Smart City Traffic Lambda Architecture](architecture_diagram.png)
 
 ---
 
